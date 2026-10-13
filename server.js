@@ -24,13 +24,24 @@ const server = http.createServer((req, res) => {
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
   if (reqPath === '/') reqPath = '/index.html';
 
-  const filePath = path.join(__dirname, reqPath);
+  let filePath = path.join(__dirname, reqPath);
   
   // Prevent directory traversal
   if (!filePath.startsWith(__dirname)) {
     res.writeHead(403, { 'Content-Type': 'text/plain' });
     res.end('403 Forbidden');
     return;
+  }
+
+  // Graceful resolution fallback for root vs assets/images/
+  if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+    if (reqPath.startsWith('/assets/images/')) {
+      const alt = path.join(__dirname, reqPath.replace('/assets/images/', '/'));
+      if (fs.existsSync(alt) && fs.statSync(alt).isFile()) filePath = alt;
+    } else {
+      const alt = path.join(__dirname, 'assets', 'images', reqPath);
+      if (fs.existsSync(alt) && fs.statSync(alt).isFile()) filePath = alt;
+    }
   }
 
   fs.stat(filePath, (err, stats) => {

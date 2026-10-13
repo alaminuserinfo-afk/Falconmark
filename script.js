@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroBg = document.querySelector('.hero-bg img');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY < window.innerHeight) {
+    if (heroBg && window.scrollY < window.innerHeight) {
       const offset = window.scrollY * 0.3;
       heroBg.style.transform = `translateY(${offset}px) scale(1.05)`;
     }
