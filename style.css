@@ -975,6 +975,16 @@ body.modal-open {
   font-weight: 500;
 }
 
+.contact-info-item a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s var(--ease-smooth);
+}
+
+.contact-info-item a:hover {
+  color: var(--gold-400);
+}
+
 .social-links {
   display: flex;
   gap: 12px;
