@@ -1,5 +1,5 @@
 /* ============================================
-   FALCONMARK — Interactive Scripts
+   ALAMINCORE — Interactive Scripts
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {

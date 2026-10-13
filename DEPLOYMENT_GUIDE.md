@@ -1,4 +1,4 @@
-# Falconmark Website Update & Vercel Deployment Workflow
+# alamincore Website Update & Vercel Deployment Workflow
 
 This reference guide documents the end-to-end process for updating website content and automatically deploying changes to the live Vercel production site.
 
