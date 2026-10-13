@@ -53,7 +53,7 @@ graph LR
   ```
 - **Email Address**: `index.html` (`.contact-info-list`)
   ```html
-  <p><a href="mailto:hello@falconmark.com">hello@falconmark.com</a></p>
+  <p><a href="mailto:alamin17ma@gmail.com">alamin17ma@gmail.com</a></p>
   ```
 - **Social Links**: `index.html` (`.social-links`)
   - Facebook: `id="social-facebook"` (`href="https://www.facebook.com/al.amin.198396"`)
