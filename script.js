@@ -90,43 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // -------- Counter Animation --------
-  const counters = document.querySelectorAll('.counter');
-  const counterAnimated = new Set();
 
-  const animateCounter = (el) => {
-    const target = parseInt(el.getAttribute('data-target'), 10);
-    const duration = 2000;
-    const startTime = performance.now();
-
-    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-
-    const update = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = easeOutCubic(progress);
-      el.textContent = Math.floor(easedProgress * target);
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      } else {
-        el.textContent = target;
-      }
-    };
-
-    requestAnimationFrame(update);
-  };
-
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !counterAnimated.has(entry.target)) {
-        counterAnimated.add(entry.target);
-        animateCounter(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(counter => counterObserver.observe(counter));
 
   // -------- Smooth Scroll for Nav Links --------
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
