@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://falconmark.vercel.app/sitemap.xml
