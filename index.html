@@ -22,12 +22,99 @@
           <p class="lead in d1">I build and run Google Ads and Meta Ads campaigns, set up the conversion tracking behind them, and automate how new leads are followed up.</p>
           <p class="hero-btns in d2"><a class="btn btn-brass" href="contact.html">Request a free audit</a><a class="btn btn-line" href="services.html">See services</a></p>
         </div>
-        <aside class="ad in d3" aria-label="Example search ad">
-          <span class="ad-tag">Sponsored</span><span class="ad-url">alamincore.com</span>
-          <p class="ad-title">Google &amp; Meta Ads Specialist | Free Ad Account Audit</p>
-          <p>Campaign setup, conversion tracking and lead follow-up automation. Request a free audit.</p>
-          <div class="ad-links"><a href="services.html">Services</a><a href="index.html#process">How it works</a><a href="contact.html">Free audit</a></div>
-        </aside>
+        <div class="hero-visual in d3" id="hero3DScene" aria-label="3D Google Ads, Meta Ads and Automation Visual">
+          <div class="stage-3d" id="stage3D">
+            <!-- 3D Plane Ambient Depth Rings & Grid -->
+            <div class="grid-plane-3d" aria-hidden="true"></div>
+            <div class="radar-pulse" aria-hidden="true"></div>
+
+            <!-- Animated Connecting SVG Cables -->
+            <svg class="circuit-cables" viewBox="0 0 460 380" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="metaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0081FB" />
+                  <stop offset="100%" stop-color="#D2AC5C" />
+                </linearGradient>
+                <linearGradient id="googleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#34A853" />
+                  <stop offset="100%" stop-color="#D2AC5C" />
+                </linearGradient>
+              </defs>
+              <path class="cable-glow cable-meta" d="M 120 100 C 120 185, 230 180, 230 260" />
+              <path class="cable-flow cable-meta-flow" d="M 120 100 C 120 185, 230 180, 230 260" />
+              <path class="cable-glow cable-google" d="M 340 100 C 340 185, 230 180, 230 260" />
+              <path class="cable-flow cable-google-flow" d="M 340 100 C 340 185, 230 180, 230 260" />
+            </svg>
+
+            <!-- Floating Status Beacon -->
+            <div class="node-3d node-badge" style="--depth: 95px;">
+              <span class="beacon-dot"></span>
+              <span>Tracked End to End</span>
+            </div>
+
+            <!-- 3D Node: Meta Ads -->
+            <div class="node-3d node-meta" style="--depth: 45px;">
+              <div class="node-inner">
+                <div class="node-icon meta-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/>
+                  </svg>
+                </div>
+                <div class="node-content">
+                  <span class="node-tag tag-meta">Meta Ads</span>
+                  <strong class="node-title">FB &amp; Instagram</strong>
+                  <span class="node-sub">Creatives &bull; Retargeting</span>
+                </div>
+                <span class="pulse-indicator pulse-meta" title="Active campaigns"></span>
+              </div>
+            </div>
+
+            <!-- 3D Node: Google Ads -->
+            <div class="node-3d node-google" style="--depth: 60px;">
+              <div class="node-inner">
+                <div class="node-icon google-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M3.2 14.8L8.6 5.5C9.2 4.4 10.6 4 11.7 4.6L16.2 7.2C17.3 7.8 17.7 9.2 17.1 10.3L11.7 19.6C11.1 20.7 9.7 21.1 8.6 20.5L4.1 17.9C3 17.3 2.6 15.9 3.2 14.8Z" fill="#4285F4"/>
+                    <path d="M16.2 7.2L11.7 19.6C12.3 20.7 13.7 21.1 14.8 20.5L19.3 17.9C20.4 17.3 20.8 15.9 20.2 14.8L15.7 7C15.9 7 16.1 7.1 16.2 7.2Z" fill="#34A853"/>
+                    <circle cx="5.8" cy="17.2" r="2.8" fill="#FBBC04"/>
+                  </svg>
+                </div>
+                <div class="node-content">
+                  <span class="node-tag tag-google">Google Ads</span>
+                  <strong class="node-title">Search &amp; PMax</strong>
+                  <span class="node-sub">High Buying Intent</span>
+                </div>
+                <span class="pulse-indicator pulse-google" title="Active campaigns"></span>
+              </div>
+            </div>
+
+            <!-- 3D Node: Automation Engine -->
+            <div class="node-3d node-auto" style="--depth: 80px;">
+              <div class="node-inner auto-card">
+                <div class="auto-header">
+                  <div class="node-icon auto-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="3"/>
+                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="node-tag tag-brass">Automation Hub</span>
+                    <strong class="node-title">GA4 &bull; CRM &bull; n8n</strong>
+                  </div>
+                  <span class="live-chip">Live</span>
+                </div>
+                <div class="auto-pipeline">
+                  <span class="pipe-step">New Lead</span>
+                  <span class="pipe-arrow">&rarr;</span>
+                  <span class="pipe-step">Synced to CRM</span>
+                  <span class="pipe-arrow">&rarr;</span>
+                  <span class="pipe-step highlighted">Follow-Up &lt;30s</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <section class="tools"><div class="container"><p>I work in Google Ads, Meta Ads Manager, Google Analytics 4 and n8n.</p></div></section>
