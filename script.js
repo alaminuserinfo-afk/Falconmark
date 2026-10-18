@@ -31,58 +31,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 3D Hero Parallax Interaction
+  // 3D Hero Parallax Interaction (Desktop only, event-driven to preserve mobile performance)
   const heroScene = document.getElementById('hero3DScene');
   const stage = document.getElementById('stage3D');
-  if (heroScene && stage) {
+  const hasMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (heroScene && stage && hasMouse) {
     let mouseX = 0, mouseY = 0, currentX = 0, currentY = 0;
     let isInteracting = false;
+    let rafId = null;
 
-    const onMove = (clientX, clientY) => {
-      const rect = heroScene.getBoundingClientRect();
-      const x = (clientX - rect.left) / rect.width - 0.5;
-      const y = (clientY - rect.top) / rect.height - 0.5;
-      mouseX = Math.max(-20, Math.min(20, x * 28));
-      mouseY = Math.max(-16, Math.min(16, -y * 22));
+    const render = () => {
+      currentX += (mouseX - currentX) * 0.12;
+      currentY += (mouseY - currentY) * 0.12;
+      stage.style.transform = `rotateX(${currentY + 6}deg) rotateY(${currentX}deg)`;
+
+      const isSettled = !isInteracting && Math.abs(mouseX - currentX) < 0.05 && Math.abs(mouseY - currentY) < 0.05;
+      if (!isSettled) {
+        rafId = requestAnimationFrame(render);
+      } else {
+        stage.style.animationPlayState = 'running';
+        stage.style.transform = '';
+        rafId = null;
+      }
+    };
+
+    const startAnimation = () => {
+      stage.style.animationPlayState = 'paused';
+      if (!rafId) rafId = requestAnimationFrame(render);
     };
 
     heroScene.addEventListener('mousemove', (e) => {
       isInteracting = true;
-      onMove(e.clientX, e.clientY);
+      const rect = heroScene.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      mouseX = Math.max(-20, Math.min(20, x * 26));
+      mouseY = Math.max(-16, Math.min(16, -y * 20));
+      startAnimation();
     });
 
     heroScene.addEventListener('mouseleave', () => {
       isInteracting = false;
       mouseX = 0;
       mouseY = 0;
+      startAnimation();
     });
-
-    heroScene.addEventListener('touchmove', (e) => {
-      if (e.touches && e.touches[0]) {
-        isInteracting = true;
-        onMove(e.touches[0].clientX, e.touches[0].clientY);
-      }
-    }, { passive: true });
-
-    heroScene.addEventListener('touchend', () => {
-      isInteracting = false;
-      mouseX = 0;
-      mouseY = 0;
-    });
-
-    const render = () => {
-      currentX += (mouseX - currentX) * 0.1;
-      currentY += (mouseY - currentY) * 0.1;
-      if (isInteracting || Math.abs(currentX) > 0.1 || Math.abs(currentY) > 0.1) {
-        stage.style.animationPlayState = 'paused';
-        stage.style.transform = `rotateX(${currentY + 6}deg) rotateY(${currentX}deg)`;
-      } else {
-        stage.style.animationPlayState = 'running';
-        stage.style.transform = '';
-      }
-      requestAnimationFrame(render);
-    };
-    render();
   }
 
   // Audit form (audit.html): posts to the existing Google Apps Script endpoint
