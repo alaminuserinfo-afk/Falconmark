@@ -31,6 +31,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // 3D Hero Parallax Interaction
+  const heroScene = document.getElementById('hero3DScene');
+  const stage = document.getElementById('stage3D');
+  if (heroScene && stage) {
+    let mouseX = 0, mouseY = 0, currentX = 0, currentY = 0;
+    let isInteracting = false;
+
+    const onMove = (clientX, clientY) => {
+      const rect = heroScene.getBoundingClientRect();
+      const x = (clientX - rect.left) / rect.width - 0.5;
+      const y = (clientY - rect.top) / rect.height - 0.5;
+      mouseX = Math.max(-20, Math.min(20, x * 28));
+      mouseY = Math.max(-16, Math.min(16, -y * 22));
+    };
+
+    heroScene.addEventListener('mousemove', (e) => {
+      isInteracting = true;
+      onMove(e.clientX, e.clientY);
+    });
+
+    heroScene.addEventListener('mouseleave', () => {
+      isInteracting = false;
+      mouseX = 0;
+      mouseY = 0;
+    });
+
+    heroScene.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        isInteracting = true;
+        onMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    heroScene.addEventListener('touchend', () => {
+      isInteracting = false;
+      mouseX = 0;
+      mouseY = 0;
+    });
+
+    const render = () => {
+      currentX += (mouseX - currentX) * 0.1;
+      currentY += (mouseY - currentY) * 0.1;
+      if (isInteracting || Math.abs(currentX) > 0.1 || Math.abs(currentY) > 0.1) {
+        stage.style.animationPlayState = 'paused';
+        stage.style.transform = `rotateX(${currentY + 6}deg) rotateY(${currentX}deg)`;
+      } else {
+        stage.style.animationPlayState = 'running';
+        stage.style.transform = '';
+      }
+      requestAnimationFrame(render);
+    };
+    render();
+  }
+
   // Audit form (audit.html): posts to the existing Google Apps Script endpoint
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyWOAfd1FxZ-OZhbBTc4MgMP9rUKIAwc5iLDGWzjcQMHZMy0vGm88-LDa1U89UgEvTyQA/exec';
   const form = document.getElementById('auditForm');
