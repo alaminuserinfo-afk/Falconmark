@@ -12,10 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu
   const setMenu = (open) => {
     links.classList.toggle('open', open);
+    nav.classList.toggle('nav-open', open);
     burger.setAttribute('aria-expanded', String(open));
   };
-  burger.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setMenu(!links.classList.contains('open'));
+  });
   links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('click', (e) => {
+    if (links.classList.contains('open') && !links.contains(e.target) && !burger.contains(e.target)) {
+      setMenu(false);
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && links.classList.contains('open')) {
+      setMenu(false);
+    }
+  });
 
   // Audit form (audit.html): posts to the existing Google Apps Script endpoint
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyWOAfd1FxZ-OZhbBTc4MgMP9rUKIAwc5iLDGWzjcQMHZMy0vGm88-LDa1U89UgEvTyQA/exec';
