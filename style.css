@@ -4,6 +4,7 @@
   --chalk-50:#F2F5F0;--chalk-100:#E4EBE5;--white:#FFFFFF;--line:#C9D4CC;
   --ink-900:#0F1F1B;--ink-600:#4A5B55;--on-dark:#F2F5F0;--on-dark-muted:#A9BDB6;
   --brass-300:#DDBB72;--brass-400:#D2AC5C;--brass-700:#7E5F16;
+  --pink-400:#FF3377;--pink-300:#FF5C93;--pink-600:#D61A5B;
   --error:#B3261E;--error-on-dark:#FFB4AB;
   --font-display:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
   --font-text:'Newsreader',Georgia,serif;
@@ -20,14 +21,15 @@ img{display:block;max-width:100%}
 [hidden]{display:none!important}
 :focus-visible{outline:2px solid var(--brass-700);outline-offset:2px}
 .nav :focus-visible,.hero :focus-visible,.dark :focus-visible,.foot :focus-visible{outline-color:var(--brass-400)}
+.btn-brass:focus-visible,.btn-pink:focus-visible{outline-color:var(--pink-300)}
 .container{max-width:var(--container);margin:0 auto;padding:0 24px}
 .skip{position:absolute;left:-999px;top:8px;z-index:20;background:var(--white);color:var(--ink-900);padding:8px 12px}
 .skip:focus{left:8px}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 24px;border:0;border-radius:var(--radius-sm);font:600 15px var(--font-display);text-decoration:none;cursor:pointer}
-.btn-brass{background:var(--brass-400);color:var(--spruce-900)}
-.btn-brass:hover{background:var(--brass-300)}
+.btn-brass,.btn-pink{background:var(--pink-400);color:var(--white);box-shadow:0 4px 14px rgba(255,51,119,0.32);transition:background .2s,box-shadow .2s,transform .2s}
+.btn-brass:hover,.btn-pink:hover{background:var(--pink-300);color:var(--white);box-shadow:0 6px 18px rgba(255,51,119,0.45);transform:translateY(-1px)}
 .btn-dark{background:var(--spruce-800);color:var(--chalk-50)}
 .btn-dark:hover{background:var(--spruce-700)}
 .btn:disabled{opacity:.7;cursor:default}
